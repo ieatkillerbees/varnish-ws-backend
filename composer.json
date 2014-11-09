@@ -1,0 +1,15 @@
+{
+    "name": "squinones/varnish-workshop",
+    "description": "description_text",
+    "minimum-stability": "stable",
+    "license": "proprietary",
+    "authors": [
+        {
+            "name": "Samantha Quiñones",
+            "email": "samantha@tembies.com"
+        }
+    ],
+    "require": {
+        "silex/silex": "~1.2"
+    }
+}
