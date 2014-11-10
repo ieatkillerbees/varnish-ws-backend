@@ -26,7 +26,8 @@ $app->after(function (Request $request, Response $response) {
 });
 
 $app->get('/', function(Application $app) {
-	return $app['twig']->render('cached.twig', ['timestamp' => date('r')]);
+	return new \Symfony\Component\HttpFoundation\JsonResponse([['timestamp' => date('r')]]);
+//	return $app['twig']->render('cached.twig', ['timestamp' => date('r')]);
 });
 
 $app->get('/health', function (Application $app) {
