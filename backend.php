@@ -4,7 +4,6 @@ require __DIR__ . '/vendor/autoload.php';
 use Silex\Application;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\HttpFoundation\StreamedResponse;
 
 $app = new Application();
 $app['debug'] = true;
@@ -23,14 +22,11 @@ $app->after(function (Request $request, Response $response) {
 	$response->setSharedMaxAge(300);
 	$response->setVary('X-OS');
 	$response->setPublic();
+	$response->headers->set('Content-Length', strlen($response->getContent()));
 });
 
 $app->get('/', function(Application $app) {
-	return new \Symfony\Component\HttpFoundation\JsonResponse([
-		'timestamp' => date('r'),
-		'max-age' => 300
-	]);
-//	return $app['twig']->render('cached.twig', ['timestamp' => date('r')]);
+	return new \Symfony\Component\HttpFoundation\JsonResponse(['timestamp' => date('r')]);
 });
 
 $app->get('/health', function (Application $app) {
