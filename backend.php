@@ -29,5 +29,5 @@ $app->get('/', function(Application $app) {
 });
 
 $app->get('/health', function (Request $request, Response $response) {
-	return "OK";
+	return new Response("OK");
 });
