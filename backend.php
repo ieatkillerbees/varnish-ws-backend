@@ -19,7 +19,7 @@ $app->before(function (Request $request, Application $app) {
 
 $app->after(function (Request $request, Response $response) {
 	$response->setMaxAge(300);
-	$response->setSharedMaxAge((300);
+	$response->setSharedMaxAge(300);
 	$response->setVary('X-OS');
 	$response->setPublic();
 	$response->headers->set('Content-Length', strlen($response->getContent()));
