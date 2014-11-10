@@ -34,7 +34,7 @@ $app->get('/health', function (Application $app) {
 });
 
 $app->get('/esi', function(Application $app) {
-	return $app['twig']->render('esi.twig');
+	return $app['twig']->render('esi.twig', ['date' => date('r')]);
 });
 
 $app->get('/esi_date', function () {
