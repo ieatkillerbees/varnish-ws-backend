@@ -28,8 +28,8 @@ $app->after(function (Request $request, Response $response) {
 		echo $response->content();
 		flush();
 	});
-	$response->send();
-	$response->headers->set('Content-Length', strlen($response->getContent()));
+//	$response->send();
+//	$response->headers->set('Content-Length', strlen($response->getContent()));
 });
 
 $app->get('/', function(Application $app) {
