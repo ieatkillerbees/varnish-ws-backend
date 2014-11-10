@@ -117,6 +117,13 @@ sub vcl_backend_response {
       set beresp.uncacheable = true;
       return (deliver);
     }
+
+    if (bereq.url == "/esi") {
+       set beresp.do_esi = true; // Do ESI processing
+       set beresp.ttl = 24 h;    // Sets the TTL on the HTML above
+    } elseif (bereq.url == "/esi_date") {
+       set beresp.ttl = 0s;
+    }
 }
 
 # -- VCL Deliver
