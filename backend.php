@@ -28,6 +28,6 @@ $app->get('/', function(Application $app) {
 	return $app['twig']->render('cached.twig', ['timestamp' => date('r')]);
 });
 
-$app->get('/health', function (Request $request, Response $response) {
-	return new Response("OK");
+$app->get('/health', function (Application $app) {
+	return "OK";
 });
