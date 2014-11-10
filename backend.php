@@ -7,8 +7,15 @@ use Symfony\Component\HttpFoundation\Response;
 
 $app = new Application();
 $app['debug'] = true;
+$app['healthy'] = true;
 //require __DIR__ . '/config/conf_' . $_SERVER['SERVER_PORT'] . '.php';
 $app->register(new Silex\Provider\TwigServiceProvider(), ['twig.path' => __DIR__ . '/views']);
+
+$app->before(function (Request $request, Application $app) {
+	if (!$app['healthy']) {
+		$app->abort(500);
+	}
+});
 
 $app->after(function (Request $request, Response $response) {
 	$response->setMaxAge(30);
