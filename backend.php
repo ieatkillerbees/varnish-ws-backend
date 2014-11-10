@@ -32,3 +32,11 @@ $app->get('/', function(Application $app) {
 $app->get('/health', function (Application $app) {
 	return "OK";
 });
+
+$app->get('/esi', function(Application $app) {
+	return $app['twig']->render('esi.twig');
+});
+
+$app->get('/esi_date', function () {
+	return date('r');
+});
