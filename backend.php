@@ -18,7 +18,7 @@ $app->before(function (Request $request, Application $app) {
 });
 
 $app->after(function (Request $request, Response $response) {
-	$response->setMaxAge(30);
+	$response->setMaxAge(300);
 	$response->setPublic();
 	$response->headers->set('Content-Length', strlen($response->getContent()));
 	$response->headers->set('Vary', 'X-OS');
