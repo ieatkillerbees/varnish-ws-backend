@@ -26,7 +26,10 @@ $app->after(function (Request $request, Response $response) {
 });
 
 $app->get('/', function(Application $app) {
-	return new \Symfony\Component\HttpFoundation\JsonResponse([['timestamp' => date('r')]]);
+	return new \Symfony\Component\HttpFoundation\JsonResponse([
+		'timestamp' => date('r'),
+		'max-age' => 300
+	]);
 //	return $app['twig']->render('cached.twig', ['timestamp' => date('r')]);
 });
 
