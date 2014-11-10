@@ -26,7 +26,10 @@ $app->after(function (Request $request, Response $response) {
 });
 
 $app->get('/', function(Application $app) {
-	return new \Symfony\Component\HttpFoundation\JsonResponse(['timestamp' => date('r')]);
+	return "<html><head><title>Cached Content</title></head><body>The current timestamp is: ".date('r')."</body></html>";
+	return new \Symfony\Component\HttpFoundation\JsonResponse([
+		'timestamp' => date('r')
+	]);
 });
 
 $app->get('/health', function (Application $app) {
